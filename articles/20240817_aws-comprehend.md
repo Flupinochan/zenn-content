@@ -3,7 +3,7 @@ title: "Amazon Comprehendで文章からURLを抽出する"
 emoji: "📌"
 type: "tech"
 topics: ["aws", "comprehend", "lambda"]
-published: false
+published: true
 ---
 
 ## Amazon Comprehend の概要
