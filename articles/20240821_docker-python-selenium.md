@@ -94,4 +94,4 @@ https://github.com/Flupinochan/MyBlog/tree/master/CDK/docker/streamlit
 
 Claude に煽られてる気がする…
 (まあ事実だからいいか w)
-![](/images/20240821_docker-python-selenium/selenium2.png =500x)
+![](/images/20240821_docker-python-selenium/selenium2.png)
