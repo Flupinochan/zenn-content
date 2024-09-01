@@ -1,5 +1,5 @@
 ---
-title: "Pricing APIでCPU、Memory情報を取得"
+title: "AWS Pricing APIでCPU、Memory情報を取得"
 emoji: "🙌"
 type: "tech"
 topics: ["RDS", "AWS"]
