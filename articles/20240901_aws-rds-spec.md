@@ -225,7 +225,7 @@ def get_instance_specs(instance_class):
             ServiceCode="AmazonRDS",
             Filters=[
                 {"Type": "TERM_MATCH", "Field": "instanceType", "Value": instance_class},
-                {"Type": "TERM_MATCH", "Field": "location", "Value": "Asia Pacific (Tokyo)"},
+                {"Type": "TERM_MATCH", "Field": "regionCode", "Value": "ap-northeast-1"},
             ],
             MaxResults=1,
         )
