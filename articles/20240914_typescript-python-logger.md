@@ -9,13 +9,14 @@ published: true
 ## 背景
 
 私は、ファイル名や行数をログに出力したいです
-しかし、ログにファイル名や行数を出力しようとすると、コンパイル後のJavaScriptのファイル名や行数が出力されてしまいました ( ;ㅿ; )
+しかし、ログにファイル名や行数を出力しようとすると、コンパイル後の JavaScript のファイル名や行数が出力されてしまいました ( ;ㅿ; )
 
-また、Pythonのロガー設定では、「funcName」や「lineno」とするだけで簡単にファイル名や行数を出力できたのに、TypeScriptのロガー設定には、そのような機能がなかったため、スタックトレースから正規表現を利用して、ファイル名や行数を取得する必要がありました
-
+また、Python のロガー設定では、「funcName」や「lineno」とするだけで簡単に関数名や行数を出力できたのに、TypeScript のロガー設定には、そのような機能がなかったため、スタックトレースから正規表現を利用して、ファイル名や行数を取得する必要がありました
 
 ## コード例
-NestJSでは動きました
+
+NestJS では動きました
+
 ```typescript
 import { format } from "date-fns";
 import { ja } from "date-fns/locale";
@@ -72,6 +73,7 @@ logger.error("ERRORログの出力例");
 
 export default logger;
 ```
+
 ```bash
 # 出力例
 [2024/09/14 20:03:40.299 GMT+9] [INFO] [app.ts] [8行目] INFOログの出力例
@@ -79,6 +81,7 @@ export default logger;
 ```
 
 ## 作ってみたロガーライブラリ
+
 https://www.npmjs.com/package/metalmental-logger
 https://pypi.org/project/metalmental-logger/
 
