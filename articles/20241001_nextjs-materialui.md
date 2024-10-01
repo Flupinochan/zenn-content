@@ -8,6 +8,8 @@ published: true
 
 ## 事前準備
 
+Next.js のバージョンは 14.2.13 です
+
 ```bash
 npx create-next-app@latest
 ```
