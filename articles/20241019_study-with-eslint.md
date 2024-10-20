@@ -1058,7 +1058,7 @@ const ExampleComponent: React.FC = () => {
   return (
     <div>
       <img src="image.jpg" />
-      <b>This text</b>{ }
+      <b>This text</b>{' '}
       is bold
     </div>
   );
