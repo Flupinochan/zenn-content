@@ -1044,7 +1044,7 @@ const _exampleComponent: React.FC = () => {
 const HelloWorld: React.FC = () => {
   return (
     <div>
-      <_exampleComponent/>
+      <_exampleComponent />
     </div>
   );
 };
@@ -1067,7 +1067,7 @@ const ExampleComponent: React.FC = () => {
 const HelloWorld: React.FC = () => {
   return (
     <div>
-      <ExampleComponent/>
+      <ExampleComponent />
     </div>
   );
 };
