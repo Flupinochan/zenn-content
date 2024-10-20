@@ -19,6 +19,7 @@ https://github.com/leo-buneev/eslint-plugin-sort-keys-fix
 [ESLint ルール](https://eslint.org/docs/latest/rules/)
 [ESLint Stylistic ルール](https://eslint.style/rules)
 [typescript-eslint ルール](https://typescript-eslint.io/rules/)
+<br>
 
 ## 初期設定
 
@@ -201,6 +202,57 @@ export default tseslint.config({
 ```bash
 npm install
 ```
+<br>
+
+### Linter/Formatter 実行方法1
+
+`package.json` の `scripts` に記載されている以下のコマンドを実行します
+
+チェックだけする場合
+
+```bash
+npm run eslint-run
+```
+
+チェックして自動修正までする場合
+
+```bash
+npm run eslint-fix
+```
+<br>
+
+### Linter/Formatter 実行方法2
+
+`VSCodeの拡張機能` を使用し、ファイル保存時にLinter/Formatterを適用する方法です
+
+以下の拡張機能をinstallします
+https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+![](/images/20241019_study-with-eslint/1.png)
+
+以下のように VSCodeの `settings.json` を設定します
+
+```json
+{
+    "eslint.format.enable": true,
+    "editor.renderWhitespace": "all",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "always"
+    },
+    "eslint.options": {
+        "flags": [
+            "unstable_ts_config"
+        ]
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.defaultFormatter": null,
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnType": true,
+    "editor.tabSize": 2,
+    "files.eol": "\n"
+}
+```
+<br>
 
 ## ESLint で学ぶ TypeScript の基本
 
@@ -719,6 +771,7 @@ interface Address {
   city: string;
 }
 ```
+<br>
 
 ## ESLint Stylistic で学ぶ コードスタイルのベストプラクティス
 
