@@ -82,8 +82,8 @@ export default tseslint.config({
   plugins: {
     "@typescript-eslint": tsEslint, // ...tseslint.configs.strict でextendsする場合はコメントアウトする
     "@stylistic": stylistic,
-    "@import": importPlugin,
-    "@sort-keys-fix": sortKeyFix,
+    "import": importPlugin,
+    "sort-keys-fix": sortKeyFix,
   },
   // extends: [
   //   pluginJs.configs.recommended,
@@ -143,10 +143,10 @@ export default tseslint.config({
       "reservedFirst": true,
       "locale": "auto"
     }],
-    "@import/first": "error",
-    "@import/newline-after-import": "error",
-    "@import/no-duplicates": "error",
-    "@import/order": ["error", {
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "import/order": ["error", {
       "groups": [
         "builtin",
         "external",
@@ -161,7 +161,7 @@ export default tseslint.config({
       },
       "warnOnUnassignedImports": true
     }],
-    "@sort-keys-fix/sort-keys-fix": "error",
+    "sort-keys-fix/sort-keys-fix": "error",
     "@stylistic/padding-line-between-statements": ["error",
       { "blankLine": "always", "prev": "*", "next": "*" },
       { "blankLine": "never", "prev": "*", "next": "break" },
