@@ -22,6 +22,7 @@ Excelファイルの読み書きが可能
 ## 例
 
 元のExcelパラメータシート
+
 ![](/images/20241103_jinja-cloudformation/1.png)
 
 Jinjaテンプレート
@@ -29,6 +30,7 @@ Jinjaテンプレート
   - EBSのIOPSは、gp2の場合は指定できず、gp3の場合に指定可能です
 - for文
   - Tagの数は可変であるため、動的に処理できるようにしています
+
 ![](/images/20241103_jinja-cloudformation/2.png)
 
 生成されるCloudFormationテンプレート
