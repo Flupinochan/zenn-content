@@ -76,3 +76,12 @@ ExcelをPythonで読み取る際に、セル番号（例: 「A1」）を直接�
 Pythonコードは、100行くらいです
 
 https://github.com/Flupinochan/excel-to-cloudformation
+
+※補足
+Excelファイルを読み込む際に、以下のように `data_only=True` オプションを付けること
+これを設定しないと、`=` 等で値を参照している場合やExcel関数の式がそのまま取得されてしまいます
+
+```python
+excel_file_name = "【EC2】パラメータシート.xlsx"
+wb = openpyxl.load_workbook(excel_file_name, data_only=True)
+```
