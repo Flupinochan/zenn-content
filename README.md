@@ -15,3 +15,7 @@ git diff
 git diff --cached
 git diff HEAD^
 ```
+
+```bash
+git commit -m "xxx" --no-verify
+```
