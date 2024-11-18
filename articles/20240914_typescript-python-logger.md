@@ -80,6 +80,35 @@ export default logger;
 [2024/09/14 20:03:40.299 GMT+9] [ERROR] [app.ts] [9行目] ERRORログの出力例
 ```
 
+## 追記
+
+`sourceMap` or `inlineSourceMap` を有効化することでJavascriptとTypescriptがマッピングされます
+
+ログ出力に元の `.ts` ファイル名と行番号が表示されるようになります
+
+```json: tsconfig.json
+{
+  // ...
+  compilerOptions: {
+    // ...
+    "inlineSourceMap": true,  // <!-- here
+    // we recommend using a current ES version
+    target: "es2020",
+  },
+}
+```
+
+| 項目 | sourceMap | inlineSourceMap |
+| --- | --- | --- |
+| ソースマップの格納場所 | 別ファイル(.map)で生成 | JavaScriptファイル内に埋め込む |
+| 設定方法 | sourceMap: true | inlineSourceMap: true |
+| 利用用途 | .mapファイルをデプロイに含めなければセキュリティリスクを回避可能 | .mapファイルを管理する必要がないためデバッグが楽 |
+
+参考
+https://zenn.dev/king/articles/707a59953a1c95
+https://tslog.js.org/#/
+
+
 ## 作ってみたロガーライブラリ
 
 https://www.npmjs.com/package/metalmental-logger
