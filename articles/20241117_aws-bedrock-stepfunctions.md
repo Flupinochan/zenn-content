@@ -113,6 +113,7 @@ SNSトピックのARNは、適宜変更してください
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
+        "Subject.$": "$.['detail-type']",
         "Message.$": "States.Format('日本語: {}\n\naccount: {}\n\nservice: {}\n\ntime: {}\n\nregion: {}\n\nresources: {}\n\neventScopeCode: {}\n\n英語: {}', $.result.translate, $.account, $.detail.service, $.time, $.region, $.resources, $.detail.eventScopeCode, $.detail.eventDescription[*].latestDescription)",
         "TopicArn": "SNSトピックのARN"
       },
