@@ -43,13 +43,13 @@ Bedrockでモデルアクセスが有効になっていること
 ![](/images/20241117_aws-bedrock-stepfunctions/8.png)
 
 `サブスクリプションの確認` をクリックします
-![](/images/20241117_aws-bedrock-stepfunctions/900.png)
+![](/images/20241117_aws-bedrock-stepfunctions/9001.png)
 
 コピーしたURLを入力し、`サブスクリプションの確認` をクリックします
 ![](/images/20241117_aws-bedrock-stepfunctions/10.png)
 
 サブスクリプションが `確認済み` になりました
-![](/images/20241117_aws-bedrock-stepfunctions/1100.png)
+![](/images/20241117_aws-bedrock-stepfunctions/11001.png)
 
 ### Step Functions
 
