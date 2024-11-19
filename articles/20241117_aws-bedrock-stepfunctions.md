@@ -132,7 +132,6 @@ SNSトピックのARNは、適宜変更してください
 ### EventBridge
 
 `ルール` を作成します
-
 ![](/images/20241117_aws-bedrock-stepfunctions/15.png)
 ![](/images/20241117_aws-bedrock-stepfunctions/16.png)
 
