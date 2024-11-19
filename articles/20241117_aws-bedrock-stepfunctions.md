@@ -43,13 +43,13 @@ Bedrockでモデルアクセスが有効になっていること
 ![](/images/20241117_aws-bedrock-stepfunctions/8.png)
 
 `サブスクリプションの確認` をクリックします
-![](/images/20241117_aws-bedrock-stepfunctions/9.png)
+![](/images/20241117_aws-bedrock-stepfunctions/900.png)
 
 コピーしたURLを入力し、`サブスクリプションの確認` をクリックします
 ![](/images/20241117_aws-bedrock-stepfunctions/10.png)
 
 サブスクリプションが `確認済み` になりました
-![](/images/20241117_aws-bedrock-stepfunctions/11.png)
+![](/images/20241117_aws-bedrock-stepfunctions/1100.png)
 
 ### Step Functions
 
@@ -170,10 +170,10 @@ Eventを手動で発生させて、メールが届くか確認します
 `イベントバス` から `イベントの送信` をクリックします
 ![](/images/20241117_aws-bedrock-stepfunctions/21.png)
 
-| 項目 | 値 |
-| --- | --- |
-| イベントバス | default |
-| イベントソース(source) | test |
+| 項目                    | 値               |
+| ----------------------- | ---------------- |
+| イベントバス            | default          |
+| イベントソース(source)  | test             |
 | 詳細タイプ(detail-type) | AWS Health Event |
 
 `イベントの詳細(detail)` に以下のJSONを入力します
