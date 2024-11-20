@@ -1,18 +1,20 @@
 ---
-title: "【Bedrock×GuardDuty】AWSにおける脅威検出結果を日本語訳+対応方法をメール通知"
+title: "【Bedrock×GuardDuty】脅威検出結果から日本語訳+対応方法をメール通知"
 emoji: "🐬"
-type: "tech" # tech: 技術記事 / idea: アイデア
+type: "tech"
 topics: ["aws", "bedrock", "stepfunctions", "guardduty", "eventbridge"]
-published: false
+published: true
 ---
 
 ## 概要
 
-AWS GuardDutyの脅威検出結果(英語)をBedrock(RAG)で、以下のGuardDuty検出結果タイプのドキュメントをもとに、日本語訳+対応方法をメール通知します
+以下のGuardDuty検出結果タイプのドキュメントをもとに、AWS GuardDutyの脅威検出結果(英語)をBedrock(RAG)で、`日本語訳` + `対応方法`をメール通知します
 
-※本ブログで紹介する `ドキュメントとチャット(Chat with your document)` は、正確にはRAGではありませんが、使用方法はRAGと同じでコストが小さいため、使用しています
+https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html
 
-https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-active.html
+![](/images/20241118_aws-bedrock-guardduty/41.png)
+
+※本記事で紹介する `ドキュメントとチャット(Chat with your document)` は、Embeddingをしない? ため精度が低いようですが、使用方法は他のRAGと同じで、コストが小さいため、使用しています
 
 ## 背景
 
@@ -28,15 +30,19 @@ https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-active.h
 https://aws.amazon.com/jp/builders-flash/202409/dify-bedrock-automate-security-operation/
 
 AWS公式サイトで、Difyを使用した例も公開されているため、参考になさってください
-ただし、EC2等のリソースはコストがかかることがデメリットです
+ただし、EC2等のリソースはコストがかかることに注意してください
 
-本ブログでは、マネージドサービスのみ使用するため、`コストが小さい` ことがメリットです!!
+本ブログでは、マネージドサービスのみを使用するため、`コストが小さい` ことがメリットです!!
+
+Health Eventの場合の実装例は、以下をご覧ください
+
+https://zenn.dev/metalmental/articles/20241117_aws-bedrock-stepfunctions
 
 ## 前提
 
 - オレゴンリージョンであること
 - Bedrockでモデルアクセスが有効になっていること
-※Claude 3 Haikuを利用します
+※Claude 3 Sonnetを利用します
 
 ![](/images/20241117_aws-bedrock-stepfunctions/3.png)
 
@@ -121,7 +127,7 @@ S3 Bucketを作成し、圧縮したPDFファイルをアップロードしま�
 `S3 URI` をコピーしておきます
 ![](/images/20241118_aws-bedrock-guardduty/16.png)
 
-### ドキュメントとチャット(Chat with your document) の動作確認
+#### ドキュメントとチャット(Chat with your document) の動作確認
 
 `Bedrock` に移動し、`ナレッジベース` から、`ドキュメントとチャット(Chat with your document)` を選択します
 `モデル` を選択し、`最大長` を `4096` にします
@@ -145,7 +151,6 @@ $output_format_instructions$
 
 `$search_results$` には、S3 BucketにアップロードしたPDFファイルの内容と、ユーザのプロンプト内容をもとに、検索結果が入ります
 `$output_format_instructions$` には、ユーザのプロンプト内容が入ります
-※そのため、RAGではなく、ファイルの内容を含めた巨大なチャットをすることになります
 
 ![](/images/20241118_aws-bedrock-guardduty/19.png)
 
@@ -168,8 +173,13 @@ Sorry, I am unable to assist you with this request.
 ```
 
 
-### Sample Event
+### Step Functions
+
+#### Sample Event
+
 :::details GuardDutyのEvent例
+
+```json
 {
     "version": "0",
     "id": "70a2eca2-a15c-3d73-ce50-fe831aecbeae",
@@ -513,9 +523,10 @@ Sorry, I am unable to assist you with this request.
         "description": "The EC2 instance i-99999999 is behaving in a manner that may indicate it is being used to perform a Denial of Service (DoS) attack using the TCP protocol."
     }
 }
+```
+
 :::
 
-### Step Functions
 上記、GuardDutyのEvent例をもとに、Bedrockのドキュメントとチャット(Chat with your document)を実行するStep Functionsを作成します
 
 :::message alert
@@ -569,6 +580,7 @@ S3のURI と SNSのトピックARN は適宜変更してください
             "Type": "Task",
             "Resource": "arn:aws:states:::aws-sdk:sns:publish",
             "Parameters": {
+                "Subject.$": "$.['detail-type']",
                 "Message.$": "States.Format('日本語:\n{}\n\n\naccount: {}\ntype: {}\ntime: {}\nregion: {}\nresources: {}\nseverity: {}\n英語:\n{}', $.result.translate, $.account, $.detail.type, $.time, $.region, $.resources, $.detail.severity, $.detail.description)",
                 "TopicArn": "SNSのトピックARN"
             },
@@ -578,12 +590,83 @@ S3のURI と SNSのトピックARN は適宜変更してください
 }
 ```
 
+`コード` を選択して、上記コードをコピペし、`SNSのトピックARN` と `S3のURI` を修正します
+
+![](/images/20241118_aws-bedrock-guardduty/21.png)
+![](/images/20241118_aws-bedrock-guardduty/22.png)
+
+`設定` を選択して、`ステートマシン名` を入力して作成します
+![](/images/20241118_aws-bedrock-guardduty/23.png)
+
+自動で作成されるIAMロールの権限が足りないため、`AmazonBedrockFullAccess` と `AmazonS3FullAccess` のIAMポリシーを追加します
+![](/images/20241118_aws-bedrock-guardduty/24.png)
+![](/images/20241118_aws-bedrock-guardduty/25.png)
+![](/images/20241118_aws-bedrock-guardduty/26.png)
+![](/images/20241118_aws-bedrock-guardduty/27.png)
+![](/images/20241118_aws-bedrock-guardduty/28.png)
+
+#### Step Functionsのテスト
+
+Step Functionsの動作確認を行います
+`デザイン` から `RetrieveAndGenerateのフロー` を選択して、`テスト状態` を選択します
+![](/images/20241118_aws-bedrock-guardduty/29.png)
+
+`状態の入力` に、前述したGuardDutyのEvent例を入力し、`テストを開始` を選択します
+成功し、日本語の結果が出力されていればOKです
+![](/images/20241118_aws-bedrock-guardduty/30.png)
+
+### EventBridge
+
+トリガーとしてEventBridgeのルールを作成します
+![](/images/20241118_aws-bedrock-guardduty/31.png)
+![](/images/20241118_aws-bedrock-guardduty/32.png)
+
+`イベントパターン` に以下を入力します
+
+```json
+{
+  "source": ["aws.guardduty"],
+  "detail-type": ["GuardDuty Finding"],
+  "detail": {
+    "severity": [{
+      "numeric": [">=", 7]
+    }]
+  }
+}
+```
+
+![](/images/20241118_aws-bedrock-guardduty/34.png)
+![](/images/20241118_aws-bedrock-guardduty/35.png)
+![](/images/20241118_aws-bedrock-guardduty/37.png)
+
 ## テスト
+
+`CloudShell` で、以下のコマンドを実行して、サンプルのGuardDutyの脅威検出結果を作成します
 
 ```bash
 aws guardduty create-sample-findings --detector-id $(aws guardduty list-detectors --query 'DetectorIds' --output text) --finding-types Backdoor:EC2/DenialOfService.Tcp
 ```
 
-※検出結果がEventBridgeに流れるまで、最大5分程度かかります
+![](/images/20241118_aws-bedrock-guardduty/38.png)
+![](/images/20241118_aws-bedrock-guardduty/39.png)
+※脅威検出結果がEventBridgeに流れて、メール送信されるまで最大5分程度かかります
+![](/images/20241118_aws-bedrock-guardduty/40.png)
 
 ## 東京リージョンで実装する場合
+
+以下3つが考えられると思います
+
+- OpenSearch ServerlessやAuroraでベクトルデータベースを作成する
+- 東京リージョンのEventBridgeからオレゴンリージョンのEventBridgeにEventを転送する
+- 東京リージョンのEventBridge -> Lambda -> オレゴンリージョンのStep Functionsを実行 という流れにする
+
+※EventBridgeのリージョン間転送については以下の記事が参考になります
+
+https://dev.classmethod.jp/articles/eventbridge-cross-region-expands/
+
+## 最後に
+
+今後は、生成AIの画像読み取り機能も活用していきたいと感じました
+先日紹介したPython Jinjaのようなテンプレートエンジンと組み合わせると、より便利になるのではないかと思いました
+
+https://zenn.dev/metalmental/articles/20241103_jinja-cloudformation
