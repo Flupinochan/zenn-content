@@ -3,7 +3,7 @@ title: "【Bedrock×GuardDuty】AWSにおける脅威検出結果を日本語訳
 emoji: "🐬"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["aws", "bedrock", "stepfunctions", "guardduty", "eventbridge"]
-published: true
+published: false
 ---
 
 ## 概要
