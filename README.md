@@ -21,3 +21,5 @@ git commit -m "xxx" --no-verify
 ```
 
 [絵文字](https://lets-emoji.com/emojilist/emojilist-3/)
+
+gif作成 ffmpeg
