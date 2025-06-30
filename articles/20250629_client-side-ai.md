@@ -2,8 +2,8 @@
 title: "Client Side AI×Google拡張機能"
 emoji: "🕊️"
 type: "tech"
-topics: ["chrome拡張", "ai", "wxt", "react"]
-published: false
+topics: ["chrome拡張", "ai", "wxt", "react", "typescript"]
+published: true
 ---
 
 ## はじめに
@@ -101,7 +101,7 @@ console.log(`翻訳結果: ${result}`);
 
 ## サンプルGoogle拡張機能
 
-https://chromewebstore.google.com/detail/ckgmmdgflpnffbnkfoamlgfhmafidfmg/preview?hl=ja&authuser=0
+https://chromewebstore.google.com/detail/selectiontranslator/ckgmmdgflpnffbnkfoamlgfhmafidfmg?authuser=0&hl=ja
 
 ## サンプルコード
 
