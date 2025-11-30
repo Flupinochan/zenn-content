@@ -19,8 +19,8 @@ published: true
 
 Pythonだけでなく、TypeScript等の他の言語もサポートされています
 
-https://docs.powertools.aws.dev/lambda/python/latest/
-https://docs.powertools.aws.dev/lambda/typescript/latest/
+<https://docs.powertools.aws.dev/lambda/python/latest/>
+<https://docs.powertools.aws.dev/lambda/typescript/latest/>
 
 ## Lambda Powertools設定
 
@@ -44,7 +44,7 @@ https://docs.powertools.aws.dev/lambda/typescript/latest/
 | POWERTOOLS_TRACER_CAPTURE_RESPONSE | True                 | 関数のreturnをメタデータに出力する         |
 | POWERTOOLS_TRACER_CAPTURE_ERROR    | True                 | 関数で発生したエラーをメタデータに出力する |
 
-https://docs.powertools.aws.dev/lambda/python/latest/#environment-variables
+<https://docs.powertools.aws.dev/lambda/python/latest/#environment-variables>
 
 ## Tracer
 
@@ -164,6 +164,10 @@ def lambda_handler(_event: dict, _context: LambdaContext) -> None:
 ```
 
 messageに加え、タイムスタンプやログレベルなどの情報が自動的に出力されるため、ログの解析や追跡が容易になります
+
+:::message
+別ファイルなどでロガー設定を継承したい場合は、`logger = Logger(child=True)` とすると親ロガーの設定を継承できます
+:::
 
 ![](/images/20241116_aws-power-tools/8.png)
 
