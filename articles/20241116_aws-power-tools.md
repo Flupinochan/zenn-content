@@ -19,8 +19,8 @@ published: true
 
 Pythonだけでなく、TypeScript等の他の言語もサポートされています
 
-<https://docs.powertools.aws.dev/lambda/python/latest/>
-<https://docs.powertools.aws.dev/lambda/typescript/latest/>
+@[card](https://docs.powertools.aws.dev/lambda/python/latest/)
+@[card](https://docs.powertools.aws.dev/lambda/typescript/latest/)
 
 ## Lambda Powertools設定
 
@@ -44,7 +44,7 @@ Pythonだけでなく、TypeScript等の他の言語もサポートされてい�
 | POWERTOOLS_TRACER_CAPTURE_RESPONSE | True                 | 関数のreturnをメタデータに出力する         |
 | POWERTOOLS_TRACER_CAPTURE_ERROR    | True                 | 関数で発生したエラーをメタデータに出力する |
 
-<https://docs.powertools.aws.dev/lambda/python/latest/#environment-variables>
+@[card](https://docs.powertools.aws.dev/lambda/python/latest/#environment-variables)
 
 ## Tracer
 
@@ -113,6 +113,10 @@ def lambda_handler(event: dict, _context: dict) -> dict:
 ![](/images/20241116_aws-power-tools/7.png)
 
 ## Logger
+
+Lambdaのシステムログをjson形式にする方法については以下をご覧ください
+
+@[card](https://zenn.dev/metalmental/articles/20251202_aws-lambda-json)
 
 ```python: loggerTest.py
 """Loggerのチュートリアル"""
