@@ -7,7 +7,7 @@ npx zenn preview --port 8001
 ```
 
 ```bash
-npx zenn new:article --slug 20250506_resilience-polly
+npx zenn new:article --slug 20260228_amplify-cache
 ```
 
 ```bash
