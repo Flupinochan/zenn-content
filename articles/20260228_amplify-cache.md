@@ -1,5 +1,5 @@
 ---
-title: "Amplifyでのキャッシュ設定"
+title: "Amplifyのキャッシュ設定"
 emoji: "🐔"
 type: "tech"
 topics: ["amplify", "s3", "lighthouse", "cache", "aws"]
