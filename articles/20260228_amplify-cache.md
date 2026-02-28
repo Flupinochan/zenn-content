@@ -13,8 +13,8 @@ published: true
 
 ## 対象者
 
-- CSS, JS, png, mp3などのファイルをキャッシュしたい方
-- AWS Amplifyでのキャッシュ設定方法を知りたい方
+- CSS, JS, png, mp3等のファイルをキャッシュしたい方
+- AWS Amplifyのキャッシュ設定を知りたい方
 
 ## 結論
 
