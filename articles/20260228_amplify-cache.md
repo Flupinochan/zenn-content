@@ -135,6 +135,10 @@ await uploadData({
 
 ![2.png](/images/20260228_amplify-cache/2.png)
 
+追記: CloudFrontでCacheされているかどうかは以下のヘッダーから確認可能でした
+
+![3.png](/images/20260228_amplify-cache/3.png)
+
 ## おわりに
 
 Lighthouseを使用してあらためて気づいたのですが、UIコンポーネントライブラリを使用すると、たくさんのユーティリティクラス (m-2, d-flex等) を含んだ巨大なCSSファイルが含まれています
