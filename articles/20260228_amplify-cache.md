@@ -68,10 +68,6 @@ frontend:
 
 音楽再生アプリを作成しているのですが、mp3等の音楽ファイルをアップロードする際に指定しています
 
-:::message
-設定は反映されますが、署名付きURLのためかキャッシュされませんでした
-:::
-
 ```typescript:typescript
 await uploadData({
     data: blob,
@@ -135,9 +131,26 @@ await uploadData({
 
 ![2.png](/images/20260228_amplify-cache/2.png)
 
-追記: CloudFrontでCacheされているかどうかは以下のヘッダーから確認可能でした
+## 追記: x-cache と Cache-Control について
+
+### x-cache
+
+CloudFrontがOrigin (S3等)にリクエストせず、CloudFront上にキャッシュしているデータを返したかどうか
+
+- `Hit from cloudfront` : CloudFrontがOriginへアクセスせず、CloudFront上に保持しているデータを即返却した
+- `Miss from cloudfront` : CloudFrontがOriginへアクセスしてデータを取得してから返却した
+
+:::message
+`Hit from cloudfront` でもCache-Controlを設定していない場合は、ResponseBodyは返却されます。OriginへのリクエストがCloudFront上にキャッシュされているかどうかです
+:::
 
 ![3.png](/images/20260228_amplify-cache/3.png)
+
+### Cache-Control
+
+説明済みです
+
+browserにcacheされ、CloudFrontからResponseBodyが返却されないための設定です
 
 ## おわりに
 
