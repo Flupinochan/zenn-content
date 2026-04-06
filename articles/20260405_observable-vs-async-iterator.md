@@ -48,7 +48,7 @@ API Gatewayの場合
 
 上記GraphQLの仕様から以下のように読み取りました
 
-- Event Stream (作成や更新のイベント) から Response Stream (連続的なレスポンス) を返却し続ける操作
+- Event Stream (連続的な作成や更新等のイベント) から Response Stream (連続的なレスポンス) をし続ける操作
 - 具体的な実装方法は規定されておらず、サービス側にゆだねる
   - `WebSocket` や `SSE` など通信にどのプロトコルを使用するかは明記されていない
   - `Observable` や `Async Iterator` などJavaScriptクライアント側でどのように扱うか、具体的なコードは明記されていない
