@@ -1,8 +1,8 @@
 ---
-title: 'ESLint で学ぶ TypeScript'
-emoji: '🌊'
-type: 'tech'
-topics: ['ESLint', 'TypeScript', 'linter', 'formatter']
+title: "ESLint で学ぶ TypeScript"
+emoji: "🌊"
+type: "tech"
+topics: ["ESLint", "TypeScript", "linter", "formatter"]
 published: true
 ---
 
