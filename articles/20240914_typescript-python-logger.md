@@ -2,7 +2,7 @@
 title: "JavaScriptコンパイル前のTypeScriptのファイル名や行数をログ出力する"
 emoji: "🐡"
 type: "tech"
-topics: ["typeScript", "python", "log", "logger", "logging"]
+topics: ["typescript", "python", "log", "logger", "logging"]
 published: true
 ---
 
