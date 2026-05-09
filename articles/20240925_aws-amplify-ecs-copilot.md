@@ -2,7 +2,7 @@
 title: "AWS ECS Copilot CLIのStatic Siteは、SSRに対応していないので気を付けよう!"
 emoji: "🌟"
 type: "tech"
-topics: ["AWS", "Amplify", "ECS", "Copilot", "nextjs"]
+topics: ["aws", "amplify", "ecs", "copilot", "nextjs"]
 published: true
 ---
 

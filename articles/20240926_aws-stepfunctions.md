@@ -2,7 +2,7 @@
 title: "AWS Step Functions個人メモ(変数とMap)"
 emoji: "👋"
 type: "tech"
-topics: ["AWS", "stepfunctions"]
+topics: ["aws", "stepfunctions"]
 published: true
 ---
 

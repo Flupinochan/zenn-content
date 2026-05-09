@@ -2,7 +2,7 @@
 title: "【Powertools】Lambdaのベストプラクティス"
 emoji: "👌"
 type: "tech"
-topics: ["python", "AWS", "Lambda", "cloudwatch", "powertools"]
+topics: ["python", "aws", "lambda", "cloudwatch", "powertools"]
 published: true
 ---
 

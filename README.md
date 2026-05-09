@@ -22,4 +22,10 @@ git commit -m "xxx" --no-verify
 
 [絵文字](https://lets-emoji.com/emojilist/emojilist-3/)
 
-gif作成 ffmpeg
+## OpenSearch Parser Rule
+
+1. `---` から始まるfront matterを用意
+2. `title`, `emoji`, `type`, `topics` が必須
+3. `"` ダブルクォーテーションで囲むこと
+
+Tagは小文字で記載すること

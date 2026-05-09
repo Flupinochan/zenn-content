@@ -2,7 +2,7 @@
 title: "ESLint で学ぶ TypeScript"
 emoji: "🌊"
 type: "tech"
-topics: ["ESLint", "TypeScript", "linter", "formatter"]
+topics: ["eslint", "typescript", "linter", "formatter"]
 published: true
 ---
 

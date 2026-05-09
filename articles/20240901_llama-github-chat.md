@@ -2,7 +2,7 @@
 title: "LlamaとGitHubで実現するリポジトリQ&A機能"
 emoji: "📘"
 type: "tech"
-topics: ["LlamaIndex", "OpenAI", "Streamlit", "faiss", "GitHub"]
+topics: ["llamaIndex", "openAI", "streamlit", "faiss", "gitHub"]
 published: true
 ---
 
