@@ -84,7 +84,7 @@ payload: bytes = json.dumps(
 compressed: bytes = gzip.compress(payload, compresslevel=6)
 
 # base64でエンコード
-encoded: str = base64.b64encode(compressed).decode("utf-8")
+encoded: str = base64.b64encode(compressed).decode("ascii")
 
 return {
     "statusCode": 200,
