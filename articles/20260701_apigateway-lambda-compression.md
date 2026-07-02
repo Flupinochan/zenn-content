@@ -78,6 +78,7 @@ payload: bytes = json.dumps(
     {
         "message": "This is a gzip compressed binary response",
     },
+    ensure_ascii=False,
 ).encode("utf-8")
 
 # gzip圧縮
