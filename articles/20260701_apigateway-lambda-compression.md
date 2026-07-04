@@ -99,6 +99,16 @@ return {
 }
 ```
 
+## 確認方法
+
+1. `F12` キーでChrome DevToolsを開く
+2. API Gateway URLにアクセス
+3. `Network` タブを開く
+4. 項目名を右クリック → `Response headers` → `Content-Encoding` を選択
+5. `Content-Encoding` に `gzip` と表示
+
+![verify-gzip](/images/20260701_apigateway-lambda-compression/verify-gzip.png)
+
 ## おわりに
 
 CloudFrontで自動的に圧縮されるからパフォーマンスは問題ない! と思っていましたが、そもそも圧縮前のデータに対して制限を受けることもあるんですね...
