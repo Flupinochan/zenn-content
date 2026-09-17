@@ -7,7 +7,7 @@ npx zenn preview --port 8001
 ```
 
 ```bash
-npx zenn new:article --slug 20260228_amplify-cache
+npx zenn new:article --slug 20260917_kubernetes-ecr-auth-iam-roles-anywhere
 ```
 
 ```bash
