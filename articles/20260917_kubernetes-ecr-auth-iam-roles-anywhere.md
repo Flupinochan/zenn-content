@@ -289,7 +289,7 @@ openssl x509 -req -in \
   -extfile "${CA_LEAF_CONF_FILE_NAME}"
 ```
 
-:::details 例
+:::details 実行結果
 ```bash
 root nipogi default ~/iam-roles-anywhere-ca ❯ ls -l
 total 28
@@ -324,7 +324,7 @@ chown "$(whoami)" "${WORKER_NODE_CSR}"
 scp "${WORKER_NODE_CSR}" "${CA_HOST}:/tmp/"
 ```
 
-:::details 例
+:::details 実行結果
 ```bash
 # worker側でcsrを作成
 root@raspberry:~/raspberry# ls -l
@@ -358,7 +358,7 @@ openssl x509 -req \
 scp "/tmp/${WORKER_NODE_PEM}" "${WORKER_NODE_NAME}:/tmp/"
 ```
 
-:::details 例
+:::details 実行結果
 ```bash
 # CA側でpemを作成
 root nipogi default ~/iam-roles-anywhere-ca ❯ ls -l /tmp | grep .pem
@@ -378,7 +378,7 @@ root@raspberry:~/raspberry#
 mv "/tmp/${WORKER_NODE_PEM}" "${WORKER_WORKDIR}/"
 ```
 
-:::details 例
+:::details 実行結果
 ```bash
 # pemが適切な場所に格納されたことを確認
 root@raspberry:~/raspberry# ls -l "${WORKER_WORKDIR}"
@@ -430,7 +430,7 @@ credential_process = ${AWS_SIGNING_HELPER_PATH} credential-process --certificate
 EOF
 ```
 
-:::details 例
+:::details 実行結果
 ```bash
 # aws cliを確認
 root nipogi default ~/iam-roles-anywhere-ca ❯ aws --version
@@ -484,7 +484,7 @@ systemctl restart kubelet
 systemctl status kubelet
 ```
 
-:::details 例
+:::details 実行結果
 ```bash
 root nipogi default ~/iam-roles-anywhere-ca ❯ ls -l ${PROVIDER_DIR}
 total 8
@@ -553,7 +553,7 @@ kubectl describe pod ecr-test
 kubectl logs ecr-test
 ```
 
-:::details 例
+:::details 実行結果
 Dockerfileを作成
 ```dockerfile
 FROM public.ecr.aws/aws-cli/aws-cli:latest
