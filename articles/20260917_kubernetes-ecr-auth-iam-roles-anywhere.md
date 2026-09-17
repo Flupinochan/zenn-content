@@ -16,7 +16,7 @@ published: true
 
 ## 対象者
 
-- オンプレミス環境のKubernetesでECRを使用したい方
+- オンプレミス環境のKubernetesでECRを利用したい方
 - IAM Roles Anywhereの使用例を知りたい方
 
 :::message
