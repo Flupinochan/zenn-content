@@ -216,12 +216,7 @@ IAMロール画面で `ロールを作成` をクリック
 
 ![6.png](/images/20260917_kubernetes-ecr-auth-iam-roles-anywhere/6.png)
 
-`許可ポリシー`: オンプレミス環境で利用したい権限を付与 (以下例)
-
-- `AmazonEC2ContainerRegistryReadOnly`: ECRからPullするため必須
-- `AmazonS3FullAccess`: PodからS3にアクセスする場合 (本手順ではECRへの認証のみのため省略しても問題ありません)
-
-`次へ` を選択
+`許可ポリシー`: `AmazonEC2ContainerRegistryReadOnly` (ECRへのアクセス権限) を選択し、`次へ` を選択
 
 ![7.png](/images/20260917_kubernetes-ecr-auth-iam-roles-anywhere/7.png)
 
@@ -247,10 +242,7 @@ echo ${PROFILE_NAME}
 ```
 
 2. `ロール`: 作成した信頼アンカー用のIAMロールを指定
-3. `セッションポリシー`: 特定のPodに付与したい権限に絞る ※なにも指定しなくても良い
-   - `AmazonEC2ContainerRegistryReadOnly`
-   - `AmazonS3FullAccess`
-4. `プロファイルを作成` をクリック
+3. `プロファイルを作成` をクリック
 
 ![10.png](/images/20260917_kubernetes-ecr-auth-iam-roles-anywhere/10.png)
 
@@ -404,9 +396,7 @@ curl "${AWSCLI_URL}" -o "awscliv2.zip"
 unzip awscliv2.zip
 ./aws/install
 aws --version
-```
 
-```bash
 # aws_signing_helperをダウンロード
 export AWS_SIGNING_HELPER_PATH="/usr/local/bin/aws_signing_helper"
 curl -o "${AWS_SIGNING_HELPER_PATH}" "https://rolesanywhere.amazonaws.com/releases/${AWS_SIGNING_HELPER_VERSION}/${HELPER_ARCH_URL}/Linux/Amzn2023/aws_signing_helper"
