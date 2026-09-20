@@ -191,7 +191,7 @@ openssl req -new \
   -out "${WORKLOAD_CSR}" \
   -subj "/C=${CA_C}/O=${CA_O}/CN=${WORKLOAD_NAME}"
 
-# PEMを作成
+# PEM作成
 openssl x509 -req -in \
   "${WORKLOAD_CSR}" \
   -CA "${CA_PEM}" \
@@ -399,7 +399,7 @@ Databaseは基本的にお金がかかるサービスであり、あまり個人
 
 AWS RDSは当然高くて利用しません
 
-無料のSupabase等のSaaSはスペックが低かったり、定期的にアクセスしたりログインしないと停止してしまう、などの問題があり、継続的に利用できませんでした
+無料のSupabase等のSaaSはスペックが低かったり、定期的にアクセスしたり、ログインしたりしないと停止してしまう、などの問題があり、継続的に利用できませんでした
 
 自宅Kubernetesを用意した理由の一つが、PostgreSQLやOpenSearchを無料で制限無しに利用できることです
 
